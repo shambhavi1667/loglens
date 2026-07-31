@@ -1,0 +1,19 @@
+{
+  "name": "loglens-sdk",
+  "version": "1.0.0",
+  "description": "Official SDK for LogLens - AI powered log monitoring",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "logging",
+    "monitoring",
+    "loglens"
+  ],
+  "author": "Shambhavi Kulkarni",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.18.1"
+  }
+}

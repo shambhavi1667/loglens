@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LogLens Socket Test</title>
+   <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h2>LogLens Real-time Test</h2>
+  <div id="logs"></div>
+
+  <script>
+    // Connect to your WebSocket server
+    const socket = io()
+
+    // Join your room using your userId
+    // Replace this with your actual userId from MongoDB
+    const userId = '6a5b935583e1c86d0859d395'
+    socket.emit('join', userId)
+
+    console.log('Connected and joined room:', userId)
+
+    // Listen for new logs
+    socket.on('new-log', (log) => {
+      console.log('New log received:', log)
+
+      const div = document.createElement('div')
+      div.style.color = log.level === 'error' ? 'red' : log.level === 'warn' ? 'orange' : 'green'
+      div.textContent = `[${log.level.toUpperCase()}] ${log.service}: ${log.message}`
+      document.getElementById('logs').appendChild(div)
+    })
+  </script>
+</body>
+</html>
