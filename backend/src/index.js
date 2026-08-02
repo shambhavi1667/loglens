@@ -17,6 +17,12 @@ require('./config/passport')
 
 const app = express();
 
+import { createClient } from 'redis'
+import RedisStore from 'connect-redis'
+
+const redisClient = createClient({ url: process.env.REDIS_URL || 'redis://localhost:6379' })
+await redisClient.connect()
+
 
 // Create HTTP server from express app
 // Socket.io needs a raw HTTP server, not just express
@@ -61,6 +67,14 @@ app.use(session({
     }
 }))
 
+//redis
+app.use(session({
+  store: new RedisStore({ client: redisClient }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false, maxAge: 7 * 24 * 60 * 60 * 1000 }
+}))
 
 // Passport initialize
 app.use(passport.initialize())
