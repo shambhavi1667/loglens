@@ -78,7 +78,6 @@ export default function Landing({ user }) {
         padding: '120px 24px 80px',
         position: 'relative', overflow: 'hidden'
       }}>
-        {/* Glow orbs */}
         <div style={{
           position: 'absolute', top: '20%', left: '50%',
           transform: 'translateX(-50%)',
@@ -99,7 +98,6 @@ export default function Landing({ user }) {
           transition={{ duration: 0.8 }}
           style={{ textAlign: 'center', maxWidth: '820px', zIndex: 1 }}
         >
-          {/* Badge */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
             background: 'rgba(108, 99, 255, 0.08)',
@@ -179,7 +177,6 @@ export default function Landing({ user }) {
             boxShadow: '0 0 60px rgba(108,99,255,0.08)',
             fontFamily: 'monospace'
           }}>
-          {/* Terminal dots */}
           <div style={{ display: 'flex', gap: '7px', marginBottom: '20px' }}>
             <div style={{ width: 11, height: 11, borderRadius: '50%', background: '#ef4444', opacity: 0.8 }} />
             <div style={{ width: 11, height: 11, borderRadius: '50%', background: '#f59e0b', opacity: 0.8 }} />
@@ -240,49 +237,54 @@ export default function Landing({ user }) {
         </motion.div>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '1px',
-          background: 'rgba(108,99,255,0.1)',
-          border: '1px solid rgba(108,99,255,0.1)',
-          borderRadius: '12px',
-          overflow: 'hidden'
-        }}>
-          {features.map((f, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              whileHover={{ background: 'rgba(108,99,255,0.06)' }}
-              style={{
-                background: 'rgba(13, 16, 26, 0.95)',
-                padding: '32px 28px',
-                transition: 'background 0.2s'
-              }}>
-              <div style={{
-                fontSize: '13px', color: '#6C63FF',
-                fontFamily: 'monospace', marginBottom: '16px',
-                fontWeight: 700, letterSpacing: '0.06em'
-              }}>
-                {f.icon} {String(i + 1).padStart(2, '0')}
-              </div>
-              <h3 style={{
-                fontSize: '16px', fontWeight: 700,
-                marginBottom: '10px', color: '#e2e8f0',
-                letterSpacing: '-0.01em'
-              }}>
-                {f.title}
-              </h3>
-              <p style={{
-                color: '#5a6480', lineHeight: 1.65,
-                fontSize: '14px', fontWeight: 400
-              }}>
-                {f.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+  display: 'grid',
+  gridTemplateColumns: 'repeat(6, 1fr)',
+  gap: '1px',
+  background: 'rgba(108,99,255,0.1)',
+  border: '1px solid rgba(108,99,255,0.1)',
+  borderRadius: '12px',
+  overflow: 'hidden'
+}}>
+  {features.map((f, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: i * 0.08 }}
+      whileHover={{ background: 'rgba(108,99,255,0.06)' }}
+      style={{
+        background: 'rgba(13, 16, 26, 0.95)',
+        padding: '32px 28px',
+        transition: 'background 0.2s',
+        gridColumn: i === 0 ? '1 / span 2' :
+                    i === 1 ? '3 / span 2' :
+                    i === 2 ? '5 / span 2' :
+                    i === 3 ? '2 / span 2' :
+                    '4 / span 2'
+      }}>
+      <div style={{
+        fontSize: '13px', color: '#6C63FF',
+        fontFamily: 'monospace', marginBottom: '16px',
+        fontWeight: 700, letterSpacing: '0.06em'
+      }}>
+        {f.icon} {String(i + 1).padStart(2, '0')}
+      </div>
+      <h3 style={{
+        fontSize: '16px', fontWeight: 700,
+        marginBottom: '10px', color: '#e2e8f0',
+        letterSpacing: '-0.01em'
+      }}>
+        {f.title}
+      </h3>
+      <p style={{
+        color: '#5a6480', lineHeight: 1.65,
+        fontSize: '14px', fontWeight: 400
+      }}>
+        {f.desc}
+      </p>
+    </motion.div>
+  ))}
+</div>
       </section>
 
       {/* How it works */}
