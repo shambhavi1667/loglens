@@ -2,11 +2,28 @@ const mongoose = require('mongoose')
 const crypto = require('crypto')
 
 const UserSchema = new mongoose.Schema({
+  // Google OAuth (optional now)
   googleId: {
     type: String,
-    required: true,
-    unique: true
+    unique: true,
+    sparse: true  // allows multiple null values
   },
+
+  // Local auth
+  password: {
+    type: String,
+    default: null
+  },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  verificationToken: {
+    type: String,
+    default: null
+  },
+
+  // Common fields
   name: {
     type: String,
     required: true
@@ -17,13 +34,12 @@ const UserSchema = new mongoose.Schema({
     unique: true
   },
   avatar: {
-    type: String  // Google profile picture URL
+    type: String
   },
   apiKey: {
     type: String,
     unique: true,
     default: () => 'lk_' + crypto.randomBytes(16).toString('hex')
-    // generates: lk_a8f3c9d2e1b4f7a2c5d8e3f6...
   },
   createdAt: {
     type: Date,
