@@ -236,16 +236,17 @@ export default function Landing({ user }) {
           </h2>
         </motion.div>
 
-        <div style={{
+       {/* Top row - 3 cards */}
+<div style={{
   display: 'grid',
-  gridTemplateColumns: 'repeat(6, 1fr)',
+  gridTemplateColumns: 'repeat(3, 1fr)',
   gap: '1px',
   background: 'rgba(108,99,255,0.1)',
   border: '1px solid rgba(108,99,255,0.1)',
-  borderRadius: '12px',
+  borderRadius: '12px 12px 0 0',
   overflow: 'hidden'
 }}>
-  {features.map((f, i) => (
+  {features.slice(0, 3).map((f, i) => (
     <motion.div
       key={i}
       initial={{ opacity: 0 }}
@@ -255,12 +256,7 @@ export default function Landing({ user }) {
       style={{
         background: 'rgba(13, 16, 26, 0.95)',
         padding: '32px 28px',
-        transition: 'background 0.2s',
-        gridColumn: i === 0 ? '1 / span 2' :
-                    i === 1 ? '3 / span 2' :
-                    i === 2 ? '5 / span 2' :
-                    i === 3 ? '2 / span 2' :
-                    '4 / span 2'
+        transition: 'background 0.2s'
       }}>
       <div style={{
         fontSize: '13px', color: '#6C63FF',
@@ -269,17 +265,50 @@ export default function Landing({ user }) {
       }}>
         {f.icon} {String(i + 1).padStart(2, '0')}
       </div>
-      <h3 style={{
-        fontSize: '16px', fontWeight: 700,
-        marginBottom: '10px', color: '#e2e8f0',
-        letterSpacing: '-0.01em'
-      }}>
+      <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '10px', color: '#e2e8f0', letterSpacing: '-0.01em' }}>
         {f.title}
       </h3>
-      <p style={{
-        color: '#5a6480', lineHeight: 1.65,
-        fontSize: '14px', fontWeight: 400
+      <p style={{ color: '#5a6480', lineHeight: 1.65, fontSize: '14px', fontWeight: 400 }}>
+        {f.desc}
+      </p>
+    </motion.div>
+  ))}
+</div>
+
+{/* Bottom row - 2 cards centered */}
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '1px',
+  background: 'rgba(108,99,255,0.1)',
+  border: '1px solid rgba(108,99,255,0.1)',
+  borderTop: 'none',
+  borderRadius: '0 0 12px 12px',
+  overflow: 'hidden'
+}}>
+  {features.slice(3).map((f, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: i * 0.08 }}
+      whileHover={{ background: 'rgba(108,99,255,0.06)' }}
+      style={{
+        background: 'rgba(13, 16, 26, 0.95)',
+        padding: '32px 28px',
+        transition: 'background 0.2s'
       }}>
+      <div style={{
+        fontSize: '13px', color: '#6C63FF',
+        fontFamily: 'monospace', marginBottom: '16px',
+        fontWeight: 700, letterSpacing: '0.06em'
+      }}>
+        {f.icon} {String(i + 4).padStart(2, '0')}
+      </div>
+      <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '10px', color: '#e2e8f0', letterSpacing: '-0.01em' }}>
+        {f.title}
+      </h3>
+      <p style={{ color: '#5a6480', lineHeight: 1.65, fontSize: '14px', fontWeight: 400 }}>
         {f.desc}
       </p>
     </motion.div>
