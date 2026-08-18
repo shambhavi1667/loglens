@@ -232,7 +232,7 @@ export default function Landing({ user }) {
             fontWeight: 800, letterSpacing: '-0.02em',
             color: '#ffffff', maxWidth: '520px', lineHeight: 1.15
           }}>
-            Built for engineers who ship fast and break things.
+            Built for engineers who ship fast and fix faster.
           </h2>
         </motion.div>
 
