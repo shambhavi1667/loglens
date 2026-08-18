@@ -34,7 +34,7 @@ router.get('/insights', isAuthenticated, async (req, res) => {
 // Manually trigger AI analysis (for testing)
 router.post('/insights/generate', isAuthenticated, async (req, res) => {
   try {
-    const { generateInsights } = require('../services/aiService')
+    const { generateInsights } = require('../services/aiservice')
     await generateInsights()
     const insight = await Insight.findOne({ userId: req.user._id })
     res.json({ success: true, insight })
