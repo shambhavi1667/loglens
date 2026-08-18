@@ -102,4 +102,4 @@ Respond with this exact JSON structure:
   }
 }
 
-module.exports = { generateInsights }"# force rebuild" 
+module.exports = { generateInsights } 
