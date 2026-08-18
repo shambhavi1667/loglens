@@ -339,7 +339,7 @@ export default function Landing({ user }) {
               fontWeight: 800, letterSpacing: '-0.02em',
               color: '#ffffff', lineHeight: 1.15
             }}>
-              From zero to monitoring in four steps.
+              From zero to monitoring, in four steps.
             </h2>
           </motion.div>
 
