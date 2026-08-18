@@ -9,7 +9,7 @@ const { createServer } = require('http')
 const { Server } = require('socket.io')
 const path = require('path')
 const cron = require('node-cron')
-const { generateInsights } = require('./services/aiservice')
+const { generateInsights } = require('./services/ai-service')
 const { createClient } = require('redis')
 const { RedisStore } = require('connect-redis')
 
