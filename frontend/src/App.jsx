@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Landing from './pages/Landing'
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
+import Landing from './pages/landinganding'
+import Login from './pages/loginogin'
+import Dashboard from './pages/dashboard'
 
 const API = 'http://localhost:5000'
 
