@@ -5,7 +5,7 @@ import Landing from './pages/landing'
 import Login from './pages/login'
 import Dashboard from './pages/dashboard'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API_URL
 
 function App() {
   const [user, setUser] = useState(null)

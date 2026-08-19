@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 import { io } from 'socket.io-client'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API_URL
 
 const levelColor = { info: '#10b981', warn: '#f59e0b', error: '#ef4444' }
 const levelBg = { info: 'rgba(16,185,129,0.08)', warn: 'rgba(245,158,11,0.08)', error: 'rgba(239,68,68,0.08)' }
