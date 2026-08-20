@@ -53,7 +53,9 @@ app.use(passport.session())
 app.use('/auth', require('./routes/auth'))
 app.use('/api', require('./routes/api'))
 
-app.use(cors({ origin: 'https://loglens-dusky.vercel.app/' }));
+app.use(cors({ origin: 'https://loglens-dusky.vercel.app/',
+  credentials: true
+ }));
 
 app.get('/', (req, res) => {
   res.json({ message: 'LogLens backend running' })
