@@ -9,7 +9,7 @@ export default function Login() {
   const [success, setSuccess] = useState('')
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:5000/auth/google'
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`
   }
 
   const handleChange = (e) => {
@@ -45,7 +45,7 @@ export default function Login() {
         ? { name: form.name, email: form.email, password: form.password }
         : { email: form.email, password: form.password }
 
-      const res = await fetch(`http://localhost:5000${endpoint}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
